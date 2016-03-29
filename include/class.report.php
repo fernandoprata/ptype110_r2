@@ -24,10 +24,32 @@ class OverviewReport {
     var $start;
     var $end;
 
-    function __construct($start, $end='now') {
-        $this->start = $start;
-        $this->end = $end;
-    }
+    var $format;
+ 
+     function __construct($start, $end='now', $format=null) {
+         global $cfg;
+ 
+          $this->start = $start;                  $this->start = $start;
+          $this->end = $end;                  $this->end = $end;
+         $this->format = $format ?: $cfg->getDateFormat(true);
+      }              }
+            
+ 
+     function getStartDate($format=null, $translate=true) {
+ 
+         if (!$this->start)
+             return '';
+ 
+         $format =  $format ?: $this->format;
+         if ($translate) {
+             $format = str_replace(
+                     array('y', 'Y', 'm'),
+                     array('yy', 'yyyy', 'mm'),
+                     $format);
+         }
+ 
+         return Format::date(Misc::dbtime($this->start), false, $format);
+     }
 
     function getDateRange() {
         global $cfg;
