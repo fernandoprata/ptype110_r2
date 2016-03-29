@@ -29,10 +29,10 @@ class OverviewReport {
      function __construct($start, $end='now', $format=null) {
          global $cfg;
  
-          $this->start = $start;                  $this->start = $start;
-          $this->end = $end;                  $this->end = $end;
+         $this->start = $start;                  
+         $this->end = $end;                           
          $this->format = $format ?: $cfg->getDateFormat(true);
-      }              }
+      }              
             
  
      function getStartDate($format=null, $translate=true) {

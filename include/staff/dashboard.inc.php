@@ -20,9 +20,7 @@ $plots = $report->getPlotData();
                 <?php echo __( 'Report timeframe'); ?>:
                 <input type="text" class="dp input-medium search-query" 
                     name="start" placeholder="<?php echo __('Last month');?>"
-                     value="<?php 
-                        echo Format::htmlchars($report->getStartDate());
-                     ?>" />
+                     value="<?php echo Format::htmlchars($report->getStartDate());?>" />
             </label>
             <label>
                 <?php echo __( 'period');?>:
